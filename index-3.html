@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number game!!</title>
+</head>
+<body style="background-color: lightblue;">
+    <h1>Try ur best!!!</h1>
+    <hr> <br>
+    <b>Guess the number between 1-1000:</b>
+    <input type="number" max="1000" min="1" id="guessNum">
+    <button onclick="playerNum(document.getElementById('guessNum').value )" style="border-radius: 10px;width: 70px; height: 30px;" >Check!</button>
+    <p id="thongBao">
+    <p id="soLanDoan">So lan doan: 0</p>
+    <p id="thongBaoEndGame"></p>
+
+
+    <script>
+        var num=Math.ceil(Math.random()*1000)
+        var soLanDoan=0
+        function playerNum(n){
+                if (n>num) {
+                    document.getElementById("thongBao").innerHTML="It hon ban doan"
+                    soLanDoan++
+                    document.getElementById("soLanDoan").innerHTML="So lan doan: "+soLanDoan
+                    document.getElementById("thongBaoEndGame").innerHTML=""
+                }
+                else if (n<num) {
+                    document.getElementById("thongBao").innerHTML="Nhieu hon ban doan"
+                    soLanDoan++
+                    document.getElementById("soLanDoan").innerHTML="So lan doan: "+soLanDoan
+                    document.getElementById("thongBaoEndGame").innerHTML=""
+                }
+                else
+                {
+                    document.getElementById("thongBao").innerHTML="Congrat!!!"
+                    soLanDoan++
+                    document.getElementById("soLanDoan").innerHTML="So lan doan: "+soLanDoan
+                    document.getElementById("thongBaoEndGame").innerHTML="Choi tiep? Nhap so ban doan round tiep theo!"
+                    num=Math.ceil(Math.random()*1000)
+                    soLanDoan=0
+                }
+        }
+    </script> <br>
+    <hr> <br>
+    Page developer: <a href="http://facebook.com/nguyenthekhai7749" target="_blank">Facebook</a> <a href="http://discord.com/users/983387837800005652" target="_blank">Discord</a> 
+    <br>
+    Co-op developer: Itzblack trum web developer <a href="https://itzblack.carrd.co/" target="_blank" >Carrd</a>
+</body>
+</html>
