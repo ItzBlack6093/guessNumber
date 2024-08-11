@@ -12,14 +12,19 @@
     <input type="number" max="1000" min="1" id="guessNum">
     <button onclick="playerNum(document.getElementById('guessNum').value )" style="border-radius: 10px;width: 70px; height: 30px;" >Check!</button>
     <p id="thongBao">
-    <p id="soLanDoan">So lan doan: 0</p>
     <p id="thongBaoEndGame"></p>
+    <p id="soLanDoan">So lan doan: 0</p>
+    <p id="pb">First Try</p>
+    <p id="improve"></p>
+    
 
 
     <script>
         var num=Math.ceil(Math.random()*1000)
         var soLanDoan=0
+        var PB
         function playerNum(n){
+            document.getElementById("improve").innerHTML=""
                 if (n>num) {
                     document.getElementById("thongBao").innerHTML="It hon ban doan"
                     soLanDoan++
@@ -36,7 +41,31 @@
                 {
                     document.getElementById("thongBao").innerHTML="Congrat!!!"
                     soLanDoan++
-                    document.getElementById("soLanDoan").innerHTML="So lan doan: "+soLanDoan
+
+                    if(document.getElementById("pb").innerHTML == "First Try"){
+                        document.getElementById("improve").innerHTML = "This is your first game."
+                    }
+                    else{
+                        if(PB > soLanDoan){
+                            document.getElementById("improve").innerHTML = (PB - soLanDoan) + " tries improvement"
+                        }
+                        else if(PB < soLanDoan){
+                            document.getElementById("improve").innerHTML = ( soLanDoan - PB) + " tries behind"
+                        }
+                        else{
+                            document.getElementById("improve").innerHTML = "No improvement"
+                        }
+                    }
+
+                    if(soLanDoan < PB || PB==undefined){
+                        PB=soLanDoan
+                        document.getElementById("pb").innerHTML="Personal best: " + PB
+                        if(PB == 1){
+                            document.getElementById("pb").innerHTML="WORLD RECORD!"
+                        }
+                    }
+
+                    document.getElementById("soLanDoan").innerHTML="So lan doan: "+ soLanDoan
                     document.getElementById("thongBaoEndGame").innerHTML="Choi tiep? Nhap so ban doan round tiep theo!"
                     num=Math.ceil(Math.random()*1000)
                     soLanDoan=0
